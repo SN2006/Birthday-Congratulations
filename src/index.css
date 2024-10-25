@@ -1,0 +1,42 @@
+@font-face {
+  font-family: 'MonteCarlo';
+  font-weight: 400;
+  font-style: normal;
+  src: local('Rosting Gapertas'),
+  url("./assets/font/MonteCarlo/MonteCarlo-Regular.woff2") format('woff2'),
+  url("./assets/font/MonteCarlo/MonteCarlo-Regular.woff") format('woff'),
+  url("./assets/font/MonteCarlo/MonteCarlo-Regular.eot") format('eot');
+  font-display: swap;
+}
+
+:root {
+  font-family: 'MonteCarlo', sans-serif;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #000000;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+canvas{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
+
+body{
+  scroll-behavior: smooth;
+}

@@ -1,0 +1,30 @@
+.video-section{
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: start;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.video-section__video{
+    max-height: 100vh;
+    height: 100%;
+}
+
+.play-btn{
+    border: none;
+    background: deeppink;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-family: 'MonteCarlo', sans-serif;
+    font-size: 50px;
+    width: 214px;
+    border-radius: 20px;
+    z-index: 3;
+}
