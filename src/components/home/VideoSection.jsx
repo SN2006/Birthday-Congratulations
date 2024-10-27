@@ -52,7 +52,8 @@ const VideoSection = ({src_h, src_v, id, next}) => {
         document.location.href = `#${next}`;
     }
 
-    const onPauseHandler = () => {
+    const onPauseHandler = (e) => {
+        e.stopPropagation();
         let video = document.getElementById(id);
         if (isPaused){
             video.play();
@@ -84,6 +85,7 @@ const VideoSection = ({src_h, src_v, id, next}) => {
             animate={isPaused && isInViewport ? 'visible' : 'hidden'}
             variants={buttonVariants}
             className={styles["play-btn"]}
+            onClick={onPauseHandler}
         >Play</motion.button>
         <motion.video
             onClick={onPauseHandler}
