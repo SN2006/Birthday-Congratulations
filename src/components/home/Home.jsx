@@ -7,9 +7,38 @@ import video3H from "../../assets/video/horizontal/video3.mp4"
 import video2V from "../../assets/video/vertical/video2.mp4"
 import video3V from "../../assets/video/vertical/video3.mp4"
 import VideoSection from "./VideoSection.jsx";
+import Loading from "./Loading.jsx";
+import {motion} from "framer-motion";
+import {useLayoutEffect, useState} from "react";
+
+const variants = {
+    visible: {
+        opacity: 1,
+        zIndex: 99,
+    },
+    hidden: {
+        opacity: 0,
+        display: 'none',
+    }
+}
 
 const Home = () => {
+    const [isLoading, setIsLoading] = useState(true);
+
+    useLayoutEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 10000)
+    })
+
     return <div className={styles['main-container']}>
+        <motion.div
+            variants={variants}
+            initial="visible"
+            animate={isLoading ? "visible" : "hidden"}
+        >
+            <Loading/>
+        </motion.div>
         <TextSection/>
         <VideoSection src_h={IgorHorizontal} src_v={IgorVertical} id="v1"/>
         <VideoSection src_h={video2H} src_v={video2V} id="v2"/>
