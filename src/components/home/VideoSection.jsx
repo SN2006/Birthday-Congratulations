@@ -30,23 +30,17 @@ const buttonVariants = {
     }
 }
 
-const VideoSection = ({src_h, src_v, id}) => {
-    const [isPaused, setIsPaused] = useState(false);
-    const [isInViewport, setIsInViewport] = useState(false);
-    const onViewportEnterHandler = () => {
-        let video = document.getElementById(id);
-        video.play();
-        setIsPaused(video.paused);
-        setIsInViewport(true);
+const sectionVariants = {
+    hidden: {
+        display: "none",
+    },
+    visible: {
+        display: "flex",
     }
+}
 
-    const onViewportLeaveHandler = () => {
-        let video = document.getElementById(id);
-        video.pause();
-        setIsInViewport(false);
-        setIsPaused(video.paused);
-        video.currentTime = 0;
-    }
+const VideoSection = ({src_h, src_v, id, isOpen, onClose}) => {
+    const [isPaused, setIsPaused] = useState(true);
 
     const onEndedHandler = () => {
         let video = document.getElementById(id);
@@ -58,25 +52,33 @@ const VideoSection = ({src_h, src_v, id}) => {
     const onPauseHandler = (e) => {
         e.stopPropagation();
         let video = document.getElementById(id);
-        if (isPaused){
+        if (isPaused) {
             video.play();
-        }else{
+        } else {
             video.pause();
         }
         setIsPaused(prevState => !prevState);
     }
 
+    const onCloseHandler = (e) => {
+        e.stopPropagation();
+        let video = document.getElementById(id);
+        video.pause();
+        video.currentTime = 0;
+        setIsPaused(video.paused);
+        onClose();
+    }
+
     const getSrc = () => {
-        return window.innerWidth > window.innerHeight ? src_h: src_v;
+        return window.innerWidth > window.innerHeight ? src_h : src_v;
     }
 
     return <motion.section
         className={styles["video-section"]}
         initial="hidden"
-        onViewportEnter={onViewportEnterHandler}
-        onViewportLeave={onViewportLeaveHandler}
-        whileInView="visible"
-        viewport={{once: false, amount: 1}}
+        animate={isOpen ? "visible" : "hidden"}
+        variants={sectionVariants}
+        viewport={{once: false, amount: 0.8}}
     >
         <motion.button
             translate={{
@@ -85,11 +87,36 @@ const VideoSection = ({src_h, src_v, id}) => {
                 duration: 0.8,
             }}
             initial="hidden"
-            animate={isPaused && isInViewport ? 'visible' : 'hidden'}
+            animate={isPaused && isOpen ? 'visible' : 'hidden'}
             variants={buttonVariants}
             className={styles["play-btn"]}
             onClick={onPauseHandler}
-        >Play</motion.button>
+        >Play
+        </motion.button>
+        <motion.button
+            translate={{
+                type: "spring",
+                bounce: 0.4,
+                duration: 0.8,
+            }}
+            initial="hidden"
+            animate={isOpen ? 'visible' : 'hidden'}
+            variants={buttonVariants}
+            className={styles["close-btn"]}
+            onClick={onCloseHandler}
+        >
+            <svg fill="#ffffff" height="30px" width="30px" version="1.1" id="Layer_1"
+                 xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
+                 viewBox="-51.2 -51.2 614.40 614.40" xmlSpace="preserve" stroke="#ffffff">
+                <g id="SVGRepo_bgCarrier" strokeWidth="0"/>
+                <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" stroke="#ffffff"
+                   strokeWidth="102.4"> <g> <g> <polygon
+                    points="512,59.076 452.922,0 256,196.922 59.076,0 0,59.076 196.922,256 0,452.922 59.076,512 256,315.076 452.922,512 512,452.922 315.076,256 "/> </g> </g> </g>
+                <g id="SVGRepo_iconCarrier"> <g> <g> <polygon
+                    points="512,59.076 452.922,0 256,196.922 59.076,0 0,59.076 196.922,256 0,452.922 59.076,512 256,315.076 452.922,512 512,452.922 315.076,256 "/> </g> </g> </g>
+
+            </svg>
+        </motion.button>
         <motion.video
             onClick={onPauseHandler}
             onEnded={onEndedHandler}
@@ -100,10 +127,11 @@ const VideoSection = ({src_h, src_v, id}) => {
                 duration: 0.8,
             }}
             variants={videoVariants}
-            src={getSrc()}
             className={styles['video-section__video']}
+            src={getSrc()}
             autoPlay
-        ></motion.video>
+        >
+        </motion.video>
     </motion.section>
 }
 

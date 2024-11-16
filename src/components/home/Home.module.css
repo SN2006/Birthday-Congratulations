@@ -1,9 +1,51 @@
 .main-container{
-    height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    scroll-snap-type: y mandatory;
+    /*scroll-snap-type: y mandatory;*/
     overflow-y: scroll;
+}
+
+.congratulations__buttons{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.congratulations__buttons div{
+    z-index: 2;
+}
+
+.congratulations__btn{
+    font-family: 'MonteCarlo', sans-serif;
+    font-size: 60px;
+    border: none;
+    background: deeppink;
+    width:  400px;
+    height: 140px;
+    z-index: 2;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.congratulations__buttons__grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+@media (max-width: 900px) {
+    .congratulations__buttons__grid{
+        width: 100%;
+        padding: 10px;
+        grid-template-columns: 1fr;
+    }
+
+
+    .congratulations__btn{
+        width: 100%;
+    }
 }
