@@ -30,7 +30,7 @@ const buttonVariants = {
     }
 }
 
-const VideoSection = ({src_h, src_v, id, next}) => {
+const VideoSection = ({src_h, src_v, id}) => {
     const [isPaused, setIsPaused] = useState(false);
     const [isInViewport, setIsInViewport] = useState(false);
     const onViewportEnterHandler = () => {
@@ -49,7 +49,10 @@ const VideoSection = ({src_h, src_v, id, next}) => {
     }
 
     const onEndedHandler = () => {
-        document.location.href = `#${next}`;
+        let video = document.getElementById(id);
+        video.pause();
+        video.currentTime = 0;
+        setIsPaused(video.paused);
     }
 
     const onPauseHandler = (e) => {
