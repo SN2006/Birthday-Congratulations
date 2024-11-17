@@ -29,6 +29,7 @@
     z-index: 2;
     border-radius: 30px;
     cursor: pointer;
+    color: white;
 }
 
 .congratulations__buttons__grid{
