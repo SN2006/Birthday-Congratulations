@@ -62,7 +62,7 @@ const Home = () => {
     useLayoutEffect(() => {
         setTimeout(() => {
             setIsLoading(false);
-        }, 10000)
+        }, 25000)
     })
 
     return <div className={styles['main-container']}>

@@ -129,7 +129,6 @@ const VideoSection = ({src_h, src_v, id, isOpen, onClose}) => {
             variants={videoVariants}
             className={styles['video-section__video']}
             src={getSrc()}
-            autoPlay
         >
         </motion.video>
     </motion.section>
