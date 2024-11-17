@@ -8,7 +8,7 @@ import pic5 from "../../assets/images/pic5.jpg"
 import pic6 from "../../assets/images/pic6.jpg"
 import {useState} from "react";
 
-const pictureVariants = (x, y, rotateStart, rotateEnd, scale, z_index) => ({
+const pictureVariants = (x, y, rotateStart, rotateEnd, scale) => ({
     hidden: {
         rotateZ: rotateStart,
         translateX: `calc(-50% + 0px)`,
@@ -65,7 +65,7 @@ const CORDS_SMALL = [
     [-145, 150],
     [-154, -144],
     [0, -167],
-    [160, -130],
+    [140, -140],
     [162, 184],
     [10, 184],
 ];
@@ -148,7 +148,7 @@ const TextSection = () => {
                 damping: 12
             }}
             variants={pictureVariants(window.innerWidth > 900 ? CORDS_LARGE[3][0] : CORDS_SMALL[3][0],
-                window.innerWidth > 900 ? CORDS_LARGE[3][1] : CORDS_SMALL[3][1], 134, 17, 1.2, 3)}
+                window.innerWidth > 900 ? CORDS_LARGE[3][1] : CORDS_SMALL[3][1], 134, 173, 1.2, 3)}
             className={style.img}
             alt="picture"
             src={pic4}
