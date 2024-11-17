@@ -128,9 +128,9 @@ const VideoSection = ({src_h, src_v, id, isOpen, onClose}) => {
             }}
             variants={videoVariants}
             className={styles['video-section__video']}
-            src={getSrc()}
             playsInline
         >
+            <source src={getSrc()} type="video/mp4" />
         </motion.video>
     </motion.section>
 }
