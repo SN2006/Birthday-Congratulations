@@ -92,7 +92,7 @@ const Home = () => {
                         className={styles['congratulations__btn']}
                         onClick={() => setIsIgorVisible(true)}
                     >
-                        Igor
+                        Ihor
                     </motion.button>
                 </motion.div>
                 <motion.div

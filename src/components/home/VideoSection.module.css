@@ -30,6 +30,7 @@
     width: 214px;
     border-radius: 20px;
     z-index: 11;
+    color: white;
 }
 
 .close-btn{
@@ -44,4 +45,5 @@
     align-items: center;
     padding: 20px;
     z-index: 11;
+    color: white;
 }
