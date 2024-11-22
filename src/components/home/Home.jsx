@@ -2,9 +2,11 @@ import styles from "./Home.module.css"
 import TextSection from "./TextSection.jsx";
 import IgorHorizontal from "../../assets/video/horizontal/Igor.mov"
 import IgorVertical from "../../assets/video/vertical/Igor.mov"
+import SlavikHorizontal from "../../assets/video/horizontal/Slavik.mov"
+import SlavikVertical from "../../assets/video/horizontal/Slavik.mov"
 import video2H from "../../assets/video/horizontal/video2.mp4"
-import video3H from "../../assets/video/horizontal/video3.mp4"
 import video2V from "../../assets/video/vertical/video2.mp4"
+import video3H from "../../assets/video/horizontal/video3.mp4"
 import video3V from "../../assets/video/vertical/video3.mp4"
 import VideoSection from "./VideoSection.jsx";
 import Loading from "./Loading.jsx";
@@ -147,8 +149,8 @@ const Home = () => {
             onClose={() => setIsIgorVisible(false)}
         />
         <VideoSection
-            src_h={video2H}
-            src_v={video2V}
+            src_h={SlavikHorizontal}
+            src_v={SlavikVertical}
             id="v2"
             isOpen={isSlavikVisible}
             onClose={() => setIsSlavikVisible(false)}
@@ -161,8 +163,8 @@ const Home = () => {
             onClose={() => setIsValeraVisible(false)}
         />
         <VideoSection
-            src_h={video3H}
-            src_v={video3V}
+            src_h={video2H}
+            src_v={video2V}
             id="v4"
             isOpen={isDanyaVisible}
             onClose={() => setIsDanyaVisible(false)}
