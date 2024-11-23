@@ -66,17 +66,17 @@ const Home = () => {
     const [canPlay3, setCanPlay3] = useState(false);
     const [canPlay4, setCanPlay4] = useState(false);
 
-    // useLayoutEffect(() => {
-    //     setTimeout(() => {
-    //         setIsLoading(false);
-    //     }, 25000)
-    // })
-
     useEffect(() => {
-        if (canPlay1) {
+        setTimeout(() => {
             setIsLoading(false);
-        }
-    }, [canPlay1]);
+        }, 25000)
+    })
+
+    // useEffect(() => {
+    //     if (canPlay1) {
+    //         setIsLoading(false);
+    //     }
+    // }, [canPlay1]);
 
     return <div className={styles['main-container']}>
         <motion.div
