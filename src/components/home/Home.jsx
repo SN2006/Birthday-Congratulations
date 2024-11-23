@@ -73,10 +73,10 @@ const Home = () => {
     // })
 
     useEffect(() => {
-        if (canPlay1 && canPlay2 && canPlay3 && canPlay4) {
+        if (canPlay1) {
             setIsLoading(false);
         }
-    }, [canPlay1, canPlay2, canPlay3, canPlay4]);
+    }, [canPlay1]);
 
     return <div className={styles['main-container']}>
         <motion.div
