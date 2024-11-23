@@ -39,7 +39,7 @@ const sectionVariants = {
     }
 }
 
-const VideoSection = ({src_h, src_v, id, isOpen, onClose}) => {
+const VideoSection = ({src_h, src_v, id, isOpen, onClose, onCanPlay}) => {
     const [isPaused, setIsPaused] = useState(true);
 
     const onEndedHandler = () => {
@@ -67,6 +67,10 @@ const VideoSection = ({src_h, src_v, id, isOpen, onClose}) => {
         video.currentTime = 0;
         setIsPaused(video.paused);
         onClose();
+    }
+
+    const onVideoReady = () => {
+        onCanPlay();
     }
 
     const getSrc = () => {
@@ -120,6 +124,7 @@ const VideoSection = ({src_h, src_v, id, isOpen, onClose}) => {
         <motion.video
             onClick={onPauseHandler}
             onEnded={onEndedHandler}
+            onCanPlay={onVideoReady}
             id={id}
             translate={{
                 type: "spring",

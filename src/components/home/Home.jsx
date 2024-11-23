@@ -11,7 +11,7 @@ import video3V from "../../assets/video/vertical/video3.mp4"
 import VideoSection from "./VideoSection.jsx";
 import Loading from "./Loading.jsx";
 import {motion} from "framer-motion";
-import {useLayoutEffect, useState} from "react";
+import {useEffect, useState} from "react";
 
 const variants = {
     visible: {
@@ -61,11 +61,22 @@ const Home = () => {
     const [isValeraVisible, setIsValeraVisible] = useState(false);
     const [isDanyaVisible, setIsDanyaVisible] = useState(false);
 
-    useLayoutEffect(() => {
-        setTimeout(() => {
+    const [canPlay1, setCanPlay1] = useState(false);
+    const [canPlay2, setCanPlay2] = useState(false);
+    const [canPlay3, setCanPlay3] = useState(false);
+    const [canPlay4, setCanPlay4] = useState(false);
+
+    // useLayoutEffect(() => {
+    //     setTimeout(() => {
+    //         setIsLoading(false);
+    //     }, 25000)
+    // })
+
+    useEffect(() => {
+        if (canPlay1 && canPlay2 && canPlay3 && canPlay4) {
             setIsLoading(false);
-        }, 25000)
-    })
+        }
+    }, [canPlay1, canPlay2, canPlay3, canPlay4]);
 
     return <div className={styles['main-container']}>
         <motion.div
@@ -147,6 +158,7 @@ const Home = () => {
             id="v1"
             isOpen={isIgorVisible}
             onClose={() => setIsIgorVisible(false)}
+            onCanPlay={() => setCanPlay1(true)}
         />
         <VideoSection
             src_h={SlavikHorizontal}
@@ -154,6 +166,7 @@ const Home = () => {
             id="v2"
             isOpen={isSlavikVisible}
             onClose={() => setIsSlavikVisible(false)}
+            onCanPlay={() => setCanPlay2(true)}
         />
         <VideoSection
             src_h={video3H}
@@ -161,6 +174,7 @@ const Home = () => {
             id="v3"
             isOpen={isValeraVisible}
             onClose={() => setIsValeraVisible(false)}
+            onCanPlay={() => setCanPlay3(true)}
         />
         <VideoSection
             src_h={video2H}
@@ -168,6 +182,7 @@ const Home = () => {
             id="v4"
             isOpen={isDanyaVisible}
             onClose={() => setIsDanyaVisible(false)}
+            onCanPlay={() => setCanPlay4(true)}
         />
     </div>
 }
