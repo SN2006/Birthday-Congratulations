@@ -4,8 +4,8 @@ import IgorHorizontal from "../../assets/video/horizontal/Igor.mov"
 import IgorVertical from "../../assets/video/vertical/Igor.mov"
 import SlavikHorizontal from "../../assets/video/horizontal/Slavik.mov"
 import SlavikVertical from "../../assets/video/horizontal/Slavik.mov"
-import video2H from "../../assets/video/horizontal/video2.mp4"
-import video2V from "../../assets/video/vertical/video2.mp4"
+import DanyaVertical from "../../assets/video/vertical/Danya.mov"
+import DanyaHorizontal from "../../assets/video/horizontal/Danya.mov"
 import video3H from "../../assets/video/horizontal/video3.mp4"
 import video3V from "../../assets/video/vertical/video3.mp4"
 import VideoSection from "./VideoSection.jsx";
@@ -177,8 +177,8 @@ const Home = () => {
             onCanPlay={() => setCanPlay3(true)}
         />
         <VideoSection
-            src_h={video2H}
-            src_v={video2V}
+            src_h={DanyaHorizontal}
+            src_v={DanyaVertical}
             id="v4"
             isOpen={isDanyaVisible}
             onClose={() => setIsDanyaVisible(false)}
